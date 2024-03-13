@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Service</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+            background-image: url('carbg.jpg'); /* Replace 'background-image.jpg' with your image file */
+            background-size: cover;
+            background-position: center;
+            filter: blur(5px);
+        .container { width: 80%; margin: 0 auto; }
+        .car-listing { display: flex; flex-wrap: wrap; justify-content: space-between; }
+        .car { border: 1px solid #ddd; padding: 10px; margin-top: 10px; width: calc(33% - 20px); }
+        .car img { width: 100%; height: auto; }
+        select, input[type=date], input[type=number] { display: block; margin-bottom: 10px; }
+        /* Reset some basic elements for consistency */
+body, h1, h2, p, form {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    background-image: url('carbg.jpg');
+    background-size:100%;
+    background-position: center;
+    background-attachment: fixed; /* Keeps the background fixed */
+    background-repeat: no-repeat;
+            
+
+}
+
+.container {
+    max-width: 1000px; /* Adjust the maximum width as needed */
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+    backdrop-filter: blur(10px); /* Apply a blur effect to the container */
+    border-radius: 10px; /* Add rounded corners for a softer look */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+}
+
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    margin-bottom: 20px;
+    padding: 20px;
+    background: rgba(249, 249, 249, 0.3);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    box-shadow: inset 0 0 10px #ddd;
+color: black;
+}
+
+form label {
+    flex-basis: 100%;
+    margin-bottom: 10px;
+    color: black;
+}
+
+<form id="searchForm">
+        <label for="city">Preferred Pickup City:</label>
+        <input type="text" id="city" name="city" required>
+        <label for="pickupDate">Pick-up Date:</label>
+        <input type="date" id="pickupDate" name="pickupDate" required>
+        <label for="returnDate">Return Date:</label>
+        <input type="date" id="returnDate" name="returnDate" required>
+        <label for="kilometers">Total Number of Kilometers:</label>
+        <input type="number" id="kilometers" name="kilometers" required>
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+        <button type="submit">Search Cars</button>
+    </form>
+form select {
+    width: calc(50% - 40px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form button {
+            cursor: pointer;
+            background-color: #5D3FD3;
+            color: #fff;
+            border: 0;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #4a31c3;
+}
+
+.car-listing {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.car {
+    background: rgba(255, 255, 255, 0.5);;
+    margin-bottom: 20px;
+    padding: 15px;
+    width: calc(39% - 10px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.car:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.car img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.car h2 {
+    color: #333;
+    margin: 10px 0;
+}
+
+.car p {
+    color: #666;
+}
+
+@media screen and (max-width: 960px) {
+    .car {
+        width: calc(50% - 10px);
+    }
+
+    form input[type="text"],
+    form input[type="date"],
+    form input[type="number"],
+    form select {
+        width: calc(100% - 20px);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .car {
+        width: 100%;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Car Rental Service</h1>
+<form id="searchForm">
+         <label for="city">Preferred Pickup City:</label>
+            <input type="text" id="city" name="city" required>
+
+            <label for="pickupDate">Pick-up Date:</label>
+            <input type="date" id="pickupDate" name="pickupDate" required>
+
+            <label for="returnDate">Return Date:</label>
+            <input type="date" id="returnDate" name="returnDate" required>
+
+            <label for="kilometers">Total Number of Kilometers:</label>
+            <input type="number" id="kilometers" name="kilometers" required>
+
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+	    <label for="carCategory">Select a Car:</label>
+
+	    <select id="carCategory" name="Available Cars">
+            <option value="Mahindra Thar">Mahindra Thar</option>
+            <option value="Mahindra XUV700">Mahindra XUV700</option>
+            <option value="Toyota Innova Crysta">Toyota Innova Crysta</option>
+            <option value="Toyota Fortuner">Toyota Fortuner</option>
+	    <option value="Tata Harrier">Tata Harrier</option>
+            <option value="Defender">Defender</option>
+            <option value="G-wagon">G-wagon</option>
+            <option value="Bmw M340I">Bmw M340I</option>
+            <option value="GLS 400D">GLS 400D</option>
+            <option value="AUDI Q8">AUDI Q8</option>
+            <option value="Porsche 911">Porsche 911</option>
+            <option value="MClaren 720s">MClaren 720s</option>
+            <option value="Lamborghini SVJ">Lamborghini SVJ</option>
+            <option value="Ferrari SF90">Ferrari SF90</option>
+            <option value="Lamborghini Urus">Lamborghini Urus</option>
+             </select>
+            <button type="submit">Submit</button>
+        </form>
+        
+        <div>
+                    </div>
+
+        <div class="car-listing">
+            <!-- This is where the car listings will be displayed -->
+            <div class="car">
+                <img src="car1.jpg" alt="Mahindra Thar">
+                <h2>Mahindra Thar</h2>
+                <p>Price: 10000/day</p>
+                <p>Mileage: 15 km/l</p>
+            </div>
+            <div class="car">
+                <img src="car2.jpg" alt="Mahindra Xuv 700">
+                <h2>Mahindra Xuv 700</h2>
+                <p>Price: 12000/day</p>
+                <p>Mileage: 18 km/l</p>
+            </div>
+            <div class="car">
+                <img src="car3.jpg" alt="Toyota Fortuner">
+                <h2>Toyota Fortuner</h2>
+                <p>Price: 15000/day</p>
+                <p>Mileage: 13 km/l</p>
+            </div>
+            <div class="car">
+                <img src="car4.jpg" alt="Toyota Innova Crysta">
+                <h2>Toyota Innova Crysta</h2>
+                <p>Price: 14000/day</p>
+                <p>Mileage: 15 km/l</p>
+            </div>
+		<div class="car">
+                <img src="car5.jpg" alt="Tata Harrier">
+                <h2>Tata Harrier</h2>
+                <p>Price: 11000/day</p>
+                <p>Mileage: 20 km/l</p>
+            </div>
+		<div class="car">
+                <img src="car6.jpg" alt="Land Rover Defender">
+                <h2>Land Rover Defender</h2>
+                <p>Price: 35000/day</p>
+                <p>Mileage: 12 km/l</p>
+            </div>
+		<div class="car">
+                <img src="car7.jpg" alt="Mercedes Benz G-wagon">
+                <h2>Mercedes Benz G-wagon</h2>
+                <p>Price: 45000/day</p>
+                <p>Mileage: 10 km/l</p>
+            </div>
+		<div class="car">
+                <img src="car8.jpg" alt="Bmw M340I">
+                <h2>Bmw M340I</h2>
+                <p>Price: 25000/day</p>
+                <p>Mileage: 14 km/l</p>
+            </div>
+		<div class="car">
+                <img src="car9.jpg" alt="Mercedes Benz GLS 450D">
+                <h2>Mercedes Benz GLS 450D</h2>
+                <p>Price: 30000/day</p>
+                <p>Mileage: 10 km/l</p>
+            </div>
+		<div class="car">
+                <img src="car10.jpg" alt="Audi Q8">
+                <h2>AUDI Q8</h2>
+                <p>Price: 32000/day</p>
+                <p>Mileage: 12 km/l</p>
+            </div>
+		<div class="car">
+                <img src="car11.jpg" alt="Porsche 911">
+                <h2>Porsche 911</h2>
+                <p>Price: 60000/day</p>
+                <p>Mileage: 7 km/l</p>
+            </div>
+		<div class="car">
+                <img src="car12.jpg" alt="MClaren 720s">
+                <h2>MClaren 720s</h2>
+                <p>Price: 75000/day</p>
+                <p>Mileage: 4 km/l</p>
+            </div>
+		<div class="car">
+                <img src="car13.jpg" alt="Lamborghini SVJ">
+                <h2>Lamborghini SVJ</h2>
+                <p>Price: 100000/day</p>
+                <p>Mileage: 2 km/l</p>
+            </div>
+		<div class="car">
+                <img src="car14.jpg" alt="Ferrari SF90">
+                <h2>Ferrari SF90</h2>
+                <p>Price: 105000/day</p>
+                <p>Mileage: 3 km/l</p>
+            </div>
+		<div class="car">
+                <img src="car15.jpg" alt="Lamborghini Urus">
+                <h2>Lamborghini Urus</h2>
+                <p>Price: 95000/day</p>
+                <p>Mileage: 5 km/l</p>
+            </div>
+            <!-- Repeat for each car -->
+        </div>
+    </div>
+
+    <script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Simulated car data
+                const cars = [
+                    { id: 1, name: "car1", price: 20, mileage: 15, imageUrl: "car1.jpg" },
+                    { id: 2, name: "car2", price: 30, mileage: 18, imageUrl: "car2.jpg" },
+                    { id: 3, name: "car3", price: 25, mileage: 13, imageUrl: "car3.jpg" },
+		    { id: 4, name: "car4", price: 20, mileage: 15, imageUrl: "car4.jpg" },
+                    { id: 5, name: "car5", price: 30, mileage: 20, imageUrl: "car5.jpg" },
+                    { id: 6, name: "car6", price: 25, mileage: 12, imageUrl: "car6.jpg" },
+		    { id: 7, name: "car7", price: 20, mileage: 10, imageUrl: "car7.jpg" },
+                    { id: 8, name: "car8", price: 30, mileage: 14, imageUrl: "car8.jpg" },
+                    { id: 9, name: "car8", price: 25, mileage: 10, imageUrl: "car9.jpg" },
+		    { id: 10, name: "car10", price: 20, mileage: 12, imageUrl: "car10.jpg" },
+                    { id: 11, name: "car11", price: 30, mileage: 7, imageUrl: "car11.jpg" },
+                    { id: 12, name: "car12", price: 25, mileage: 4, imageUrl: "car12.jpg" },
+		    { id: 13, name: "car13", price: 20, mileage: 2, imageUrl: "car13.jpg" },
+                    { id: 14, name: "car14", price: 30, mileage: 3, imageUrl: "car14.jpg" },
+                    { id: 15, name: "car15", price: 25, mileage: 5, imageUrl: "car15.jpg" }
+                ];
+            
+                // Function to render cars to the page
+                function renderCars(carsToRender) {
+                    const listingDiv = document.querySelector('.car-listing');
+                    listingDiv.innerHTML = ''; // Clear existing cars
+            
+                    carsToRender.forEach(car => {
+                        const carDiv = document.createElement('div');
+                        carDiv.className = 'car';
+                        carDiv.innerHTML = `
+                            <img src="${car.imageUrl}" alt="${car.name}">
+                            <h2>${car.name}</h2>
+                            <p>Price: $${car.price}/day</p>
+                            <p>Mileage: ${car.mileage} km/l</p>
+                        `;
+                        listingDiv.appendChild(carDiv);
+                    });
+                }
+            
+                // Initially render all cars
+                renderCars(cars);
+            
+                // Handle the sort select change
+                document.getElementById('sort').addEventListener('change', function() {
+                    const sortValue = this.value;
+                    let sortedCars = [...cars]; // Create a copy of the cars array to sort
+            
+                    switch(sortValue) {
+                        case 'priceLowHigh':
+                            sortedCars.sort((a, b) => a.price - b.price);
+                            break;
+                        case 'priceHighLow':
+                            sortedCars.sort((a, b) => b.price - a.price);
+                            break;
+                        case 'mileageLowHigh':
+                            sortedCars.sort((a, b) => a.mileage - b.mileage);
+                            break;
+                        case 'mileageHighLow':
+                            sortedCars.sort((a, b) => b.mileage - a.mileage);
+                            break;
+                    }
+            
+                    renderCars(sortedCars);
+                });
+            
+                // Example function to handle form submission
+                // In a real scenario, you'd fetch data based on these parameters
+                document.getElementById('searchForm').addEventListener('submit', function(event) {
+                    event.preventDefault(); // Prevent the form from submitting normally
+            
+                    // Here you'd typically fetch filtered car data based on the form inputs
+                    // For this example, we'll just re-render the cars array
+                    renderCars(cars);
+            
+                    // Log the form data to the console for demonstration purposes
+                    const formData = new FormData(this);
+                    for (const [key, value] of formData.entries()) {
+                        console.log(`${key}: ${value}`);
+                    }
+                });
+            });
+            </script>
+            
+    </script>
+</body>
+</html>
